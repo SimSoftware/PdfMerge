@@ -259,3 +259,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/PdfMerge/test1.pdf
+/PdfMerge/test2.pdf
+/PdfMerge/final.pdf
