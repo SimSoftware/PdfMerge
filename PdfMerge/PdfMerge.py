@@ -1,31 +1,21 @@
+# This Python file uses the following encoding: utf-8
+
 from pyPdf import PdfFileWriter, PdfFileReader
 import sys
+import os
 
-argvLen = len(sys.argv)
+filelist = os.listdir(".")
 
-if argvLen is 1:
-	print "Insert pdf name & number"
-	exit()
+filelist.sort() # 파일 오름차순으로 정렬
 
-if argvLen is 2:
-	print "Insert number of pdf document"
-	exit()
-
-init_name = sys.argv[1]
-for k in range(2,argvLen-1):
-	init_name += " "+sys.argv[k]
-
-num = int(sys.argv[argvLen-1])
-
+num = len(filelist)
 output = PdfFileWriter()
 
-for i in range(num) :
+for filename in filelist :
 	
-	input = PdfFileReader(file(init_name,"rb"))
+	input = PdfFileReader(file(filename,"rb"))
 	for j in range(input.getNumPages()):
 		output.addPage(input.getPage(j))
-	print ("read file "+init_name+" complete ")
-	init_name = init_name.replace(str(i+1),str(i+2))
 
 outputStream = file("final.pdf","wb")
 output.write(outputStream)
