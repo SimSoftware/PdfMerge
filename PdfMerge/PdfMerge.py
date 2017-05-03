@@ -1,16 +1,21 @@
 from pyPdf import PdfFileWriter, PdfFileReader
 import sys
 
-if len(sys.argv) is 1:
+argvLen = len(sys.argv)
+
+if argvLen is 1:
 	print "Insert pdf name & number"
 	exit()
 
-if len(sys.argv) is 2:
+if argvLen is 2:
 	print "Insert number of pdf document"
 	exit()
 
 init_name = sys.argv[1]
-num = int(sys.argv[2])
+for k in range(2,argvLen-1):
+	init_name += " "+sys.argv[k]
+
+num = int(sys.argv[argvLen-1])
 
 output = PdfFileWriter()
 
